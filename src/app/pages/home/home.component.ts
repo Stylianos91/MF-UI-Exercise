@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-interface Country {
-  id?: number;
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
 
-const COUNTRIES: Country[] = [
+
+const COUNTRIES = [
   {
     name: 'Russia',
     flag: 'f/f3/Flag_of_Russia.svg',
@@ -96,13 +90,19 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
   page = 1;
-  pageSize = 4;
-  collectionSize = COUNTRIES.length;
+  pageSize = 3;
+  max = COUNTRIES.length / this.pageSize;
 
-  get countries(): Country[] {
+  get countries() {
     return COUNTRIES
       .map((country, i) => ({id: i + 1, ...country}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+  increasePage() {
+    this.page++;
+  }
+  decreasePage() {
+    this.page--;
   }
   ngOnInit() {
   }
