@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ServerService} from '../../services/server.service';
 
 const COUNTRIES = [
   {
@@ -88,9 +88,9 @@ const COUNTRIES = [
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serverService: ServerService) { }
   page = 1;
-  pageSize = 3;
+  pageSize = 10;
   max = COUNTRIES.length / this.pageSize;
 
   get countries() {
@@ -103,6 +103,13 @@ export class HomeComponent implements OnInit {
   }
   decreasePage() {
     this.page--;
+  }
+  onGetPosts(){
+    this.serverService.getServerPosts().subscribe(
+      (resources) => {
+      },
+      (error) => console.log(error)
+    );
   }
   ngOnInit() {
   }

@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { PostEditComponent } from './pages/post-edit/post-edit.component';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {ServerService} from './services/server.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
