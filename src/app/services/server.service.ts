@@ -12,13 +12,22 @@ export class ServerService {
     'Accept': '*/*',
     'Content-Type': '*/*'
   };
-  private baseURL = 'https://jsonplaceholder.typicode.com/posts';
+  private baseURLPosts = 'https://jsonplaceholder.typicode.com/posts';
+  private baseURLUsers = 'https://jsonplaceholder.typicode.com/users';
   getServerPosts() {
-    return this.http.get(this.baseURL,
+    return this.http.get(this.baseURLPosts,
       {headers: new HttpHeaders(this.headerDict), responseType: 'text'}).pipe(map(
       (response) => {
         const data: any = JSON.parse(response);
-        console.log(data);
+        return (data);
+      }
+    ));
+  }
+  getServerUsers() {
+    return this.http.get(this.baseURLUsers,
+      {headers: new HttpHeaders(this.headerDict), responseType: 'text'}).pipe(map(
+      (response) => {
+        const data: any = JSON.parse(response);
         return (data);
       }
     ));
