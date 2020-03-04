@@ -1,5 +1,18 @@
 <p>home works!</p>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div>
+  <div *ngIf="max > 5; else elseBlock">
+    <a>You are not logged in </a>
+    <button (click)="goToLogin()">Log In</button>
+  </div>
+
+  <ng-template #elseBlock>
+    <a>Welcome </a>
+    <a>User</a>
+
+  </ng-template>
+</div>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -32,5 +45,3 @@
     <i class="fas fa-angle-right"></i>
   </button>
 </div>
-<button (click)="onGetPosts()">Posts</button>
-<button (click)="onGetUsers()">Users</button>

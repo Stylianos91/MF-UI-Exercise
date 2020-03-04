@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServerService} from '../../services/server.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   private USERS = [];
   private POSTS = [];
   private max;
-  constructor(private serverService: ServerService) { }
+  constructor(private serverService: ServerService, private router: Router) { }
   page = 1;
   pageSize = 10;
 
@@ -65,6 +66,9 @@ export class HomeComponent implements OnInit {
     const url = 'http://' + site;
     const win = window.open(url, '_blank');
     win.focus();
+  }
+  goToLogin() {
+    this.router.navigateByUrl('/login');
   }
   ngOnInit() {
     this.onGetPosts();
