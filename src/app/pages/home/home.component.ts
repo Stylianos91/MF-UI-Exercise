@@ -10,6 +10,7 @@ import {ServerService} from '../../services/server.service';
 export class HomeComponent implements OnInit {
   private TABLE_DATA = [];
   private USERS = [];
+  private POSTS = [];
   constructor(private serverService: ServerService) { }
   page = 1;
   pageSize = 10;
@@ -30,33 +31,49 @@ export class HomeComponent implements OnInit {
   }
   onGetPosts() {
     this.serverService.getServerPosts().subscribe(
-      (resources: any []) => {
-        for (let i = 0; i < resources.length; i++) {
-          this.TABLE_DATA.push(resources[i]);
-        }
+      (response: any []) => {
+        this.POSTS = response;
+        this.onGetUsers();
       },
       (error) => console.log(error)
     );
-    this.max = this.TABLE_DATA.length / this.pageSize;
-    for (let i = 0; i < this.TABLE_DATA.length; i++) {
-      for (let j = 0; j < this.USERS.length; j++) {
-        if (this.TABLE_DATA[i].userId === this.USERS[j].id ){
-          this.TABLE_DATA[i].user = this.USERS[j].name;
-        }
-      }
-    }
-    console.log(this.TABLE_DATA);
   }
   onGetUsers() {
     this.serverService.getServerUsers().subscribe(
       (response: any []) => {
           this.USERS = response;
+          console.log(this.USERS);
+          console.log(this.POSTS);
+          this.buildTable(this.USERS, this.POSTS);
       },
       (error) => console.log(error)
     );
-    console.log(this.USERS);
+  }
+  buildTable(users, post) {
+    let tableData = [];
+    for (let i = 0; i < post.length; i++) {
+      tableData.push({user: post[i].userId, body: post[i].body , title: post[i].title });
+    }
+    for (let i = 0; i < tableData.length; i++) {
+      const id = tableData[i].user;
+      tableData[i].user = users[id - 1];
+    }
+    console.log('-----------------');
+    console.log(tableData);
+    this.TABLE_DATA = tableData;
+    this.max = this.TABLE_DATA.length / this.pageSize;
   }
   ngOnInit() {
+    this.onGetPosts();
   }
 
+
+  // for (let i = 0; i < this.TABLE_DATA.length; i++) {
+  //   for (let j = 0; j < this.USERS.length; j++) {
+  //     if (this.TABLE_DATA[i].userId === this.USERS[j].id ){
+  //       this.TABLE_DATA[i].user = this.USERS[j].name;
+  //     }
+  //   }
+  // }
+  //this.max = this.TABLE_DATA.length / this.pageSize;
 }

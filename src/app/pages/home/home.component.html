@@ -9,7 +9,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let post of tableData">
-    <th scope="row">{{ post.user }}</th>
+    <th scope="row">{{ post.user.name }}</th>
     <td>
     <a href="javascript:void(0);" > {{ post.title }}</a>
       <a>  {{ post.body }}</a>
