@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ServerService} from './services/server.service';
+import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    PostEditComponent
+    PostEditComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

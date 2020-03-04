@@ -68,7 +68,10 @@ export class HomeComponent implements OnInit {
     win.focus();
   }
   goToLogin() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/app/login');
+  }
+  goToEdit() {
+    this.router.navigateByUrl('/app/postedit');
   }
   ngOnInit() {
     this.onGetPosts();
