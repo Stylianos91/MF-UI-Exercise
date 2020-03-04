@@ -11,10 +11,10 @@ export class HomeComponent implements OnInit {
   private TABLE_DATA = [];
   private USERS = [];
   private POSTS = [];
+  private max;
   constructor(private serverService: ServerService) { }
   page = 1;
   pageSize = 10;
-  max = this.TABLE_DATA.length / this.pageSize;
 
   get tableData() {
     return this.TABLE_DATA
@@ -23,11 +23,9 @@ export class HomeComponent implements OnInit {
   }
   increasePage() {
     this.page++;
-    console.log(this.max);
   }
   decreasePage() {
     this.page--;
-    console.log(this.max);
   }
   onGetPosts() {
     this.serverService.getServerPosts().subscribe(
@@ -50,7 +48,7 @@ export class HomeComponent implements OnInit {
     );
   }
   buildTable(users, post) {
-    let tableData = [];
+    const tableData = [];
     for (let i = 0; i < post.length; i++) {
       tableData.push({user: post[i].userId, body: post[i].body , title: post[i].title });
     }
@@ -63,17 +61,12 @@ export class HomeComponent implements OnInit {
     this.TABLE_DATA = tableData;
     this.max = this.TABLE_DATA.length / this.pageSize;
   }
+  goToCompanySite(site) {
+    const url = 'http://' + site;
+    const win = window.open(url, '_blank');
+    win.focus();
+  }
   ngOnInit() {
     this.onGetPosts();
   }
-
-
-  // for (let i = 0; i < this.TABLE_DATA.length; i++) {
-  //   for (let j = 0; j < this.USERS.length; j++) {
-  //     if (this.TABLE_DATA[i].userId === this.USERS[j].id ){
-  //       this.TABLE_DATA[i].user = this.USERS[j].name;
-  //     }
-  //   }
-  // }
-  //this.max = this.TABLE_DATA.length / this.pageSize;
 }

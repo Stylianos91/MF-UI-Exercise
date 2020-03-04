@@ -9,11 +9,16 @@
   </thead>
   <tbody>
   <tr *ngFor="let post of tableData">
-    <th scope="row">{{ post.user.name }}</th>
-    <td>
+
+    <th scope="row">
+      {{ post.user.name }}
+      <a href="javascript:void(0);"  (click)="goToCompanySite(post.user.website)"> {{ post.user.website}}</a>
+    </th>
+
+    <th scope="row">
     <a href="javascript:void(0);" > {{ post.title }}</a>
       <a>  {{ post.body }}</a>
-    </td>
+    </th>
 <!--    <td>{{ post.area | number}}</td>-->
 <!--    <td>{{ post.population | number }}</td>-->
   </tr>
