@@ -10,7 +10,7 @@
   <ng-template #elseBlock>
     <a>Welcome </a>
     <a>User</a>
-    <button (click)="goToEdit()">New Post</button>
+    <button (click)="goToEdit([],'', true)">New Post</button>
     <button>Log Out</button>
 
   </ng-template>
@@ -31,7 +31,7 @@
     </th>
 
     <th scope="row">
-    <a href="javascript:void(0);"  (click)="goToEdit(post, post.title)"> {{ post.title }}</a>
+    <a href="javascript:void(0);"  (click)="goToEdit(post, post.title, false)"> {{ post.title }}</a>
       <a>  {{ post.body }}</a>
     </th>
 

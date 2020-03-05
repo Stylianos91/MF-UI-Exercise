@@ -1,1 +1,33 @@
-<p>post-edit works!</p>
+<div>
+  <div *ngIf="lnd.isNew === false; else elseBlock">
+    <h2>Edit Post</h2>
+  </div>
+  <ng-template #elseBlock>
+    <h2>New Post</h2>
+  </ng-template>
+  <a href="javascript:void(0);" (click)="goToHome()">Go back to Home page</a>
+  <div>
+    <div style="display:grid">
+      <label>Title</label>
+      <div>
+        <textarea style="width: 100%" [(ngModel)]="lnd.editTitle"></textarea>
+      </div>
+    </div>
+    <div style="display:grid">
+      <label>Message</label>
+      <div>
+        <textarea style="width: 100%" [(ngModel)]="lnd.editMessage"></textarea>
+      </div>
+    </div>
+
+  </div>
+  <div style="display: inline-flex">
+    <div *ngIf="lnd.isNew === false;">
+      <button>Delete</button>
+    </div>
+    <div class="save-cancel">
+      <button>Save</button>
+      <button>Cancel</button>
+    </div>
+  </div>
+</div>

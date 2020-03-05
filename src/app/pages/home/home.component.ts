@@ -28,9 +28,10 @@ export class HomeComponent implements OnInit {
   goToLogin() {
     this.router.navigateByUrl('/app/login');
   }
-  goToEdit(post, title) {
+  goToEdit(post, title, isNew) {
     console.log(post);
     console.log(title);
+    this.lnd.isNew = isNew;
     this.router.navigateByUrl('/app/postedit');
   }
   ngOnInit() {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LandingComponent} from '../landing/landing.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-edit',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lnd: LandingComponent, private router: Router) { }
 
   ngOnInit() {
   }
-
-}
+  goToHome() {
+    this.router.navigateByUrl('/app/home');
+  }
+  }
