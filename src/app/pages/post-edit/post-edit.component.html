@@ -6,11 +6,18 @@
     <h2>New Post</h2>
   </ng-template>
   <a href="javascript:void(0);" (click)="goToHome()">Go back to Home page</a>
+
+
+
   <div>
     <div style="display:grid">
       <label>Title</label>
       <div>
         <textarea style="width: 100%" [(ngModel)]="lnd.editTitle"></textarea>
+      </div>
+      <div>
+        <label style="color: red" *ngIf="checkEmpty(lnd.editTitle)">The Title cannot be empty!</label>
+        <label style="color: red" *ngIf="lnd.editTitle.length > 200">The Title cannot be longer than 200 characters</label>
       </div>
     </div>
     <div style="display:grid">
@@ -18,16 +25,24 @@
       <div>
         <textarea style="width: 100%" [(ngModel)]="lnd.editMessage"></textarea>
       </div>
+      <div>
+        <label style="color: red" *ngIf="checkEmpty(lnd.editMessage)">The Message cannot be empty!</label>
+        <label style="color: red" *ngIf="lnd.editMessage.length > 2000">The Message cannot be longer than 2000 characters</label>
+      </div>
     </div>
+    <div style="display: inline-flex; padding-top: 50px">
+      <div *ngIf="lnd.isNew === false;">
+        <button>Delete</button>
+      </div>
+      <div class="save-cancel">
+        <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
+        <button [disabled]="checkDisabled()"(click)="cancelAction()">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-  </div>
-  <div style="display: inline-flex">
-    <div *ngIf="lnd.isNew === false;">
-      <button>Delete</button>
-    </div>
-    <div class="save-cancel">
-      <button>Save</button>
-      <button>Cancel</button>
-    </div>
-  </div>
+
+
+
+
 </div>

@@ -14,8 +14,8 @@ export class LandingComponent implements OnInit {
   pageSize = 10;
   page = 1;
   isNew = true;
-  editTitle;
-  editMessage;
+  editTitle = '';
+  editMessage = '';
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
