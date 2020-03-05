@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 <div>
-  <div *ngIf="max < 5; else elseBlock">
+  <div *ngIf="lnd.max < 5; else elseBlock">
     <a>You are not logged in </a>
     <button (click)="goToLogin()">Log In</button>
   </div>
@@ -23,7 +23,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let post of tableData">
+  <tr *ngFor="let post of lnd.tableData">
 
     <th scope="row">
       {{ post.user.name }}
@@ -31,19 +31,18 @@
     </th>
 
     <th scope="row">
-    <a href="javascript:void(0);" > {{ post.title }}</a>
+    <a href="javascript:void(0);"  (click)="goToEdit(post, post.title)"> {{ post.title }}</a>
       <a>  {{ post.body }}</a>
     </th>
-<!--    <td>{{ post.area | number}}</td>-->
-<!--    <td>{{ post.population | number }}</td>-->
+
   </tr>
   </tbody>
 </table>
 <div>
-  <button (click)="decreasePage()" [disabled]="page - 1 === 0">
+  <button (click)="lnd.decreasePage()" [disabled]="lnd.page - 1 === 0">
     <i class="fas fa-angle-left"></i>
   </button>
-  <button  (click)="increasePage()" [disabled]="page > max">
+  <button  (click)="lnd.increasePage()" [disabled]="lnd.page > lnd.max">
     <i class="fas fa-angle-right"></i>
   </button>
 </div>
