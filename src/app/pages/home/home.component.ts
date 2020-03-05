@@ -10,13 +10,20 @@ import {LandingComponent} from '../landing/landing.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+userIn = '';
 
   constructor(private serverService: ServerService, private router: Router, private lnd: LandingComponent) { }
 
 
 
-
+  checkForUser() {
+this.userIn = sessionStorage.getItem('userLoggedIn');
+    if (this.userIn) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 
 
@@ -26,6 +33,7 @@ export class HomeComponent implements OnInit {
     win.focus();
   }
   goToLogin() {
+    sessionStorage.clear();
     this.router.navigateByUrl('/app/login');
   }
   goToEdit(post, title, isNew) {

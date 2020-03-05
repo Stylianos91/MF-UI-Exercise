@@ -8,14 +8,16 @@ import {ServerService} from '../../services/server.service';
 })
 export class LandingComponent implements OnInit {
   private TABLE_DATA = [];
-  private USERS = [];
+   USERS = [];
   private POSTS = [];
-   max;
+   max = 0;
   pageSize = 10;
   page = 1;
   isNew = true;
   editTitle = '';
   editMessage = '';
+  userName = '';
+  userToLogin = [];
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {

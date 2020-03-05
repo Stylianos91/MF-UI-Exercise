@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div style="display:inline-grid">
+  <label>User Name</label>
+  <div>
+    <textarea [(ngModel)]="lnd.userName"></textarea>
+  </div>
+  <label style="color: red" *ngIf="checkUsers(lnd.userName)">Not a valid user name!</label>
+  <div>
+    <button [disabled]="checkEmpty(lnd.userName)" (click)="loginAction()"> Log In </button>
+  </div>
+</div>

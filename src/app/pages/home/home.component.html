@@ -1,17 +1,16 @@
-<p>home works!</p>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 <div>
-  <div *ngIf="lnd.max < 5; else elseBlock">
+  <div *ngIf="!checkForUser(); else elseBlock">
     <a>You are not logged in </a>
     <button (click)="goToLogin()">Log In</button>
   </div>
 
   <ng-template #elseBlock>
     <a>Welcome </a>
-    <a>User</a>
+    <a>{{userIn}}</a>
     <button (click)="goToEdit([],'', true)">New Post</button>
-    <button>Log Out</button>
+    <button (click)="goToLogin()">Log Out</button>
 
   </ng-template>
 </div>
