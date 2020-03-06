@@ -25,6 +25,10 @@ export class PostEditComponent implements OnInit {
 
   saveAction() {
     console.log('Save action------------------');
+    this.titleField = this.lnd.editTitle;
+    this.messageField = this.lnd.editMessage;
+    this.router.navigateByUrl('/app/home');
+    this.lnd.saveNewPost();
   }
 
   cancelAction() {

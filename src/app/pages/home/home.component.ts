@@ -38,10 +38,18 @@ this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
     this.userIn = '';
     this.router.navigateByUrl('/app/login');
   }
-  goToEdit(post, title, isNew) {
-    console.log(post);
-    console.log(title);
-    this.lnd.isNew = isNew;
+
+  goToEdit(post) {
+    this.lnd.isNew = false;
+    this.lnd.editTitle = post.title;
+    this.lnd.editMessage = post.body;
+    this.router.navigateByUrl('/app/postedit');
+  }
+
+  goToNew() {
+    this.lnd.isNew = true;
+    this.lnd.editTitle = '';
+    this.lnd.editMessage = '';
     this.router.navigateByUrl('/app/postedit');
   }
   ngOnInit() {

@@ -35,8 +35,14 @@
         <button>Delete</button>
       </div>
       <div class="save-cancel">
-        <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
-        <button [disabled]="checkDisabled()"(click)="cancelAction()">Cancel</button>
+        <div *ngIf="lnd.isNew === false; else elseBlock2">
+          <h3>Edit Post</h3>
+        </div>
+        <ng-template #elseBlock2>
+          <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
+        </ng-template>
+
+        <button [disabled]="checkDisabled()" (click)="cancelAction()">Cancel</button>
       </div>
     </div>
   </div>

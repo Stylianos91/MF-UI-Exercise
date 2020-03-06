@@ -54,7 +54,7 @@ export class LandingComponent implements OnInit {
     console.log('-----------------');
     console.log(tableData);
     this.TABLE_DATA = tableData;
-    this.max = this.TABLE_DATA.length / this.pageSize;
+    this.updateMax();
   }
   get tableData() {
     return this.TABLE_DATA
@@ -66,5 +66,22 @@ export class LandingComponent implements OnInit {
   }
   decreasePage() {
     this.page--;
+  }
+
+  saveNewPost() {
+    const newRow = {user: this.userToLogin, body: this.editMessage, title: this.editTitle};
+    this.TABLE_DATA.unshift(newRow);
+    this.TABLE_DATA = [...this.TABLE_DATA];
+    this.updateMax();
+  }
+
+  editPost(post) {
+    this.TABLE_DATA[post.id] =  {user: this.userToLogin, body: this.editMessage, title: this.editTitle};
+    this.TABLE_DATA = [...this.TABLE_DATA];
+    this.updateMax();
+  }
+
+  updateMax() {
+    this.max = this.TABLE_DATA.length / this.pageSize;
   }
 }
