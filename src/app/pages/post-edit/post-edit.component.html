@@ -36,7 +36,7 @@
       </div>
       <div class="save-cancel">
         <div *ngIf="lnd.isNew === false; else elseBlock2">
-          <h3>Edit Post</h3>
+          <button [disabled]="checkDisabled()" (click)="editAction()">Save</button>
         </div>
         <ng-template #elseBlock2>
           <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>

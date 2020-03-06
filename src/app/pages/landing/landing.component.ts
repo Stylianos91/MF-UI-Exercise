@@ -17,6 +17,7 @@ export class LandingComponent implements OnInit {
   editTitle = '';
   editMessage = '';
   userToLogin = [];
+  postToEdit = [];
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
@@ -45,7 +46,7 @@ export class LandingComponent implements OnInit {
   buildTable(users, post) {
     const tableData = [];
     for (let i = 0; i < post.length; i++) {
-      tableData.push({user: post[i].userId, body: post[i].body , title: post[i].title });
+      tableData.push({user: post[i].userId, id: post[i].id,  body: post[i].body , title: post[i].title });
     }
     for (let i = 0; i < tableData.length; i++) {
       const id = tableData[i].user;
@@ -69,19 +70,31 @@ export class LandingComponent implements OnInit {
   }
 
   saveNewPost() {
-    const newRow = {user: this.userToLogin, body: this.editMessage, title: this.editTitle};
+    const newRow = {user: this.userToLogin, id: this.TABLE_DATA.length, body: this.editMessage, title: this.editTitle};
     this.TABLE_DATA.unshift(newRow);
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
   }
 
-  editPost(post) {
-    this.TABLE_DATA[post.id] =  {user: this.userToLogin, body: this.editMessage, title: this.editTitle};
+  editPost() {
+    console.log(this.postToEdit);
+    console.log(this.editMessage);
+    console.log(this.editTitle);
+    console.log('post id ' + this.postToEdit['id']);
+    const editRow = {user: this.userToLogin, id: this.postToEdit['id'], body: this.editMessage, title: this.editTitle};
+    for (let i = 0; i < this.TABLE_DATA.length; i++) {
+      if (this.TABLE_DATA[i].id === this.postToEdit['id']) {
+      //  this.TABLE_DATA.splice( i, 1);
+        this.TABLE_DATA[i] = editRow;
+      }
+    }
+  //  this.TABLE_DATA.unshift(editRow);
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
   }
 
   updateMax() {
     this.max = this.TABLE_DATA.length / this.pageSize;
+    console.log(this.TABLE_DATA.length);
   }
 }

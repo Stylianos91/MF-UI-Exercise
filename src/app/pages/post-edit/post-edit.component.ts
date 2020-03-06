@@ -30,6 +30,11 @@ export class PostEditComponent implements OnInit {
     this.router.navigateByUrl('/app/home');
     this.lnd.saveNewPost();
   }
+  editAction() {
+    console.log('Edit action------------------');
+    this.router.navigateByUrl('/app/home');
+    this.lnd.editPost();
+  }
 
   cancelAction() {
     console.log('Cancel action------------------');

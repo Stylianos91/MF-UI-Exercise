@@ -41,6 +41,7 @@ this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
 
   goToEdit(post) {
     this.lnd.isNew = false;
+    this.lnd.postToEdit = post;
     this.lnd.editTitle = post.title;
     this.lnd.editMessage = post.body;
     this.router.navigateByUrl('/app/postedit');
