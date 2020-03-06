@@ -17,8 +17,9 @@ userIn = '';
 
 
   checkForUser() {
-this.userIn = sessionStorage.getItem('userLoggedIn');
-    if (this.userIn) {
+this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
+    if (this.lnd.userToLogin) {
+      this.userIn = this.lnd.userToLogin['name'];
       return true;
     } else {
       return false;
@@ -34,6 +35,7 @@ this.userIn = sessionStorage.getItem('userLoggedIn');
   }
   goToLogin() {
     sessionStorage.clear();
+    this.userIn = '';
     this.router.navigateByUrl('/app/login');
   }
   goToEdit(post, title, isNew) {

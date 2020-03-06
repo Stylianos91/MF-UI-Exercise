@@ -16,7 +16,6 @@ export class LandingComponent implements OnInit {
   isNew = true;
   editTitle = '';
   editMessage = '';
-  userName = '';
   userToLogin = [];
   constructor(private serverService: ServerService) { }
 

@@ -1,10 +1,10 @@
 <div style="display:inline-grid">
   <label>User Name</label>
   <div>
-    <textarea [(ngModel)]="lnd.userName"></textarea>
+    <textarea [(ngModel)]="userNameField"></textarea>
   </div>
-  <label style="color: red" *ngIf="checkUsers(lnd.userName)">Not a valid user name!</label>
+  <label style="color: red" *ngIf="checkUsers(userNameField)">Not a valid user name!</label>
   <div>
-    <button [disabled]="checkEmpty(lnd.userName)" (click)="loginAction()"> Log In </button>
+    <button [disabled]="checkEmpty(userNameField)" (click)="loginAction(userNameField)"> Log In </button>
   </div>
 </div>

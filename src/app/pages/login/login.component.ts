@@ -8,8 +8,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  userNameFound = '';
   availableUsers = [];
+  userNameField = '';
   constructor(private lnd: LandingComponent, private router: Router) { }
   checkEmpty(field) {
     if (!field.replace(/\s/g, '').length) {
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     this.getUsers();
       if (this.availableUsers.includes(userName)) {
         console.log('Found in names ' + userName);
-        this.userNameFound = userName;
         return false;
       } else {
         console.log('Not in names');
@@ -36,11 +35,11 @@ export class LoginComponent implements OnInit {
       }
   }
 
-  loginAction() {
+  loginAction(userName) {
     for (let i = 0; i < this.lnd.USERS.length; i++) {
-     if (this.userNameFound === this.lnd.USERS[i].username) {
+     if (userName === this.lnd.USERS[i].username) {
        this.lnd.userToLogin = this.lnd.USERS[i];
-       sessionStorage.setItem('userLoggedIn', this.lnd.userToLogin['name'].toString());
+       sessionStorage.setItem('userLoggedIn', JSON.stringify(this.lnd.userToLogin));
        console.log('Login action------0');
        this.router.navigateByUrl('/app/home');
      }
