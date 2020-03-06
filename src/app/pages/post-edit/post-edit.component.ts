@@ -35,6 +35,13 @@ export class PostEditComponent implements OnInit {
     this.router.navigateByUrl('/app/home');
     this.lnd.editPost();
   }
+  deleteAction() {
+    if (confirm('Are you sure you want to delete this post?')) {
+      this.lnd.deletePost();
+      this.router.navigateByUrl('/app/home');
+    }
+
+  }
 
   cancelAction() {
     console.log('Cancel action------------------');

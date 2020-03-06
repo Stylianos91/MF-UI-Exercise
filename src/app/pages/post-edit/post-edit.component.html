@@ -32,7 +32,7 @@
     </div>
     <div style="display: inline-flex; padding-top: 50px">
       <div *ngIf="lnd.isNew === false;">
-        <button>Delete</button>
+        <button (click)="deleteAction()">Delete</button>
       </div>
       <div class="save-cancel">
         <div *ngIf="lnd.isNew === false; else elseBlock2">

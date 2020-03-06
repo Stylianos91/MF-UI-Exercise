@@ -77,24 +77,27 @@ export class LandingComponent implements OnInit {
   }
 
   editPost() {
-    console.log(this.postToEdit);
-    console.log(this.editMessage);
-    console.log(this.editTitle);
-    console.log('post id ' + this.postToEdit['id']);
     const editRow = {user: this.userToLogin, id: this.postToEdit['id'], body: this.editMessage, title: this.editTitle};
     for (let i = 0; i < this.TABLE_DATA.length; i++) {
       if (this.TABLE_DATA[i].id === this.postToEdit['id']) {
-      //  this.TABLE_DATA.splice( i, 1);
         this.TABLE_DATA[i] = editRow;
       }
     }
-  //  this.TABLE_DATA.unshift(editRow);
+    this.TABLE_DATA = [...this.TABLE_DATA];
+    this.updateMax();
+  }
+  deletePost() {
+    for (let i = 0; i < this.TABLE_DATA.length; i++) {
+      if (this.TABLE_DATA[i].id === this.postToEdit['id']) {
+          this.TABLE_DATA.splice( i, 1);
+      }
+    }
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
   }
 
   updateMax() {
     this.max = this.TABLE_DATA.length / this.pageSize;
-    console.log(this.TABLE_DATA.length);
+    console.log('Table length is ' + this.TABLE_DATA.length);
   }
 }
