@@ -88,6 +88,14 @@ export class PostEditComponent implements OnInit {
     }
   }
 
+  checkDisabledAny() {
+    if (this.checkAnyModified() === true && this.checkValidated() === true) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   confirmNavigation(url) {
     if (this.checkAnyModified() === true) {
       if (confirm('Unsaved Changes, Leave anyway?')) {
