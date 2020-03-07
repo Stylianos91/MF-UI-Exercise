@@ -1,0 +1,23 @@
+.login-page {
+  height: 500px;
+}
+.header-group {
+  border-style: solid;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.login-group {
+  display: inline-grid;
+  margin-top: 100px;
+  margin-left: 400px;
+  width: 600px;
+  height: 100px;
+}
+.text-area-group {
+ width: 100%;
+}
+.button-group {
+  padding-left: 300px;
+  margin-top: -30px;
+}

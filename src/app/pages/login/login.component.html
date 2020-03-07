@@ -1,10 +1,23 @@
-<div style="display:inline-grid">
-  <label>User Name</label>
-  <div>
-    <textarea [(ngModel)]="userNameField"></textarea>
+<div class="login-page">
+
+  <div class="header-group">
+    <h2>Log in</h2>
   </div>
-  <label style="color: red" *ngIf="checkUsers(userNameField)">Not a valid user name!</label>
-  <div>
-    <button [disabled]="checkEmpty(userNameField)" (click)="loginAction(userNameField)"> Log In </button>
+
+  <div class="login-group">
+
+    <div>
+      <h5>User Name</h5>
+    </div>
+
+    <div>
+      <textarea rows="1" style="width: 60%" [(ngModel)]="userNameField"></textarea>
+    </div>
+
+    <label style="color: red" *ngIf="checkUsers(userNameField)">Not a valid user name!</label>
+
+    <div class="button-group">
+      <button [disabled]="checkEmpty(userNameField)" (click)="loginAction(userNameField)"> Log In</button>
+    </div>
   </div>
 </div>
