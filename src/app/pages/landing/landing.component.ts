@@ -18,6 +18,9 @@ export class LandingComponent implements OnInit {
   editMessage = '';
   userToLogin = [];
   postToEdit = [];
+  showGotSaved = false;
+  showGotUpdated = false;
+  showGotDeleted = false;
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
@@ -70,13 +73,16 @@ export class LandingComponent implements OnInit {
   }
 
   saveNewPost() {
+    this.resetMessages();
     const newRow = {user: this.userToLogin, id: this.TABLE_DATA.length, body: this.editMessage, title: this.editTitle};
     this.TABLE_DATA.unshift(newRow);
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
+    this.showGotSaved = true;
   }
 
   editPost() {
+    this.resetMessages();
     const editRow = {user: this.userToLogin, id: this.postToEdit['id'], body: this.editMessage, title: this.editTitle};
     for (let i = 0; i < this.TABLE_DATA.length; i++) {
       if (this.TABLE_DATA[i].id === this.postToEdit['id']) {
@@ -85,8 +91,10 @@ export class LandingComponent implements OnInit {
     }
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
+    this.showGotUpdated = true;
   }
   deletePost() {
+    this.resetMessages();
     for (let i = 0; i < this.TABLE_DATA.length; i++) {
       if (this.TABLE_DATA[i].id === this.postToEdit['id']) {
           this.TABLE_DATA.splice( i, 1);
@@ -94,10 +102,16 @@ export class LandingComponent implements OnInit {
     }
     this.TABLE_DATA = [...this.TABLE_DATA];
     this.updateMax();
+    this.showGotDeleted = true;
   }
 
   updateMax() {
     this.max = this.TABLE_DATA.length / this.pageSize;
     console.log('Table length is ' + this.TABLE_DATA.length);
+  }
+  resetMessages() {
+    this.showGotSaved = false;
+    this.showGotUpdated = false;
+    this.showGotDeleted = false;
   }
 }

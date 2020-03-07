@@ -14,6 +14,11 @@
 
   </ng-template>
 </div>
+
+<label style="color: green" *ngIf="lnd.showGotSaved">A new post was saved successfully</label>
+<label style="color: green" *ngIf="lnd.showGotUpdated">Post was updated successfully</label>
+<label style="color: green" *ngIf="lnd.showGotDeleted">Post was deleted successfully</label>
+
 <table class="table table-striped">
   <thead>
   <tr>
