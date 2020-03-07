@@ -40,11 +40,13 @@ this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
   }
 
   goToEdit(post) {
-    this.lnd.isNew = false;
-    this.lnd.postToEdit = post;
-    this.lnd.editTitle = post.title;
-    this.lnd.editMessage = post.body;
-    this.router.navigateByUrl('/app/postedit');
+    if (this.lnd.userToLogin['id'] === post.user['id']) {
+      this.lnd.isNew = false;
+      this.lnd.postToEdit = post;
+      this.lnd.editTitle = post.title;
+      this.lnd.editMessage = post.body;
+      this.router.navigateByUrl('/app/postedit');
+    }
   }
 
   goToNew() {
