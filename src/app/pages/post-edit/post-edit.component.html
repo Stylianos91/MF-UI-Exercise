@@ -19,20 +19,20 @@
     <div style="display:grid">
       <h5>Title</h5>
       <div>
-        <textarea rows="1" style="width: 100%" [(ngModel)]="bnd.editTitle"></textarea>
+        <textarea #title="ngModel" rows="1" style="width: 100%" [(ngModel)]="bnd.editTitle"></textarea>
       </div>
       <div class="error-message">
-        <label style="color: red" *ngIf="checkEmpty(bnd.editTitle)">The Title cannot be empty!</label>
+        <label style="color: red" *ngIf="checkEmpty(bnd.editTitle) && title.dirty">The Title cannot be empty!</label>
         <label style="color: red" *ngIf="bnd.editTitle.length > 200">The Title cannot be longer than 200 characters</label>
       </div>
     </div>
     <div style="display:grid">
       <h5>Message</h5>
       <div>
-        <textarea rows="5" style="width: 100%" [(ngModel)]="bnd.editMessage"></textarea>
+        <textarea #message="ngModel" rows="5" style="width: 100%" [(ngModel)]="bnd.editMessage"></textarea>
       </div>
         <div class="error-message">
-          <label style="color: red" *ngIf="checkEmpty(bnd.editMessage)">The Message cannot be empty!</label>
+          <label style="color: red" *ngIf="checkEmpty(bnd.editMessage) && message.dirty">The Message cannot be empty!</label>
           <label style="color: red" *ngIf="bnd.editMessage.length > 2000">The Message cannot be longer than 2000 characters</label>
      </div>
     </div>
@@ -44,12 +44,12 @@
       </div>
 
       <div class="save-cancel">
-        <div class="small-gap" *ngIf="bnd.isNew === false; else elseBlock2">
-          <button [disabled]="checkDisabledAny()" (click)="editAction()">Save</button>
+        <div class="small-gap" *ngIf="bnd.isNew === false; else saveNewBlock">
+          <button [disabled]="!checkValidated() || !(title.dirty || message.dirty)" (click)="editAction()">Save</button>
         </div>
-        <ng-template #elseBlock2>
+        <ng-template #saveNewBlock>
           <div class="small-gap">
-            <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
+            <button [disabled]="!checkValidated()  || !(title.dirty || message.dirty)" (click)="saveAction()">Save</button>
           </div>
         </ng-template>
         <div class="small-gap">

@@ -45,14 +45,6 @@ export class PostEditComponent implements OnInit {
     this.confirmNavigation('/app/home');
   }
 
-  checkModified() {
-    if ((this.titleField !== this.bnd.editTitle) && (this.messageField !== this.bnd.editMessage)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   checkAnyModified() {
     if ((this.titleField !== this.bnd.editTitle) || (this.messageField !== this.bnd.editMessage)) {
       return true;
@@ -75,22 +67,6 @@ export class PostEditComponent implements OnInit {
       return true;
     } else {
       return false;
-    }
-  }
-
-  checkDisabled() {
-    if (this.checkModified() === true && this.checkValidated() === true) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  checkDisabledAny() {
-    if (this.checkAnyModified() === true && this.checkValidated() === true) {
-      return false;
-    } else {
-      return true;
     }
   }
 
