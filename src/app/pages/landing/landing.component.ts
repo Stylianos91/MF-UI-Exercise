@@ -104,7 +104,14 @@ export class LandingComponent implements OnInit {
     this.updateMax();
     this.showGotDeleted = true;
   }
-
+  checkForUser() {
+    this.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
+    if (this.userToLogin) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   updateMax() {
     this.max = this.TABLE_DATA.length / this.pageSize;
     console.log('Table length is ' + this.TABLE_DATA.length);

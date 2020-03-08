@@ -24,14 +24,12 @@ export class PostEditComponent implements OnInit {
   }
 
   saveAction() {
-    console.log('Save action------------------');
     this.titleField = this.lnd.editTitle;
     this.messageField = this.lnd.editMessage;
     this.router.navigateByUrl('/app/home');
     this.lnd.saveNewPost();
   }
   editAction() {
-    console.log('Edit action------------------');
     this.router.navigateByUrl('/app/home');
     this.lnd.editPost();
   }
@@ -44,7 +42,7 @@ export class PostEditComponent implements OnInit {
   }
 
   cancelAction() {
-    console.log('Cancel action------------------');
+    this.confirmNavigation('/app/home');
   }
 
   checkModified() {

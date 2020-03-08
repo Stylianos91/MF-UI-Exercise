@@ -10,23 +10,8 @@ import {LandingComponent} from '../landing/landing.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-userIn = '';
 
   constructor(private serverService: ServerService, private router: Router, private lnd: LandingComponent) { }
-
-
-
-  checkForUser() {
-this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
-    if (this.lnd.userToLogin) {
-      this.userIn = this.lnd.userToLogin['name'];
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
 
   goToCompanySite(site) {
     const url = 'http://' + site;
@@ -35,7 +20,6 @@ this.lnd.userToLogin = JSON.parse(sessionStorage.getItem('userLoggedIn'));
   }
   goToLogin() {
     sessionStorage.clear();
-    this.userIn = '';
     this.router.navigateByUrl('/app/login');
   }
 

@@ -9,6 +9,10 @@
     <div class="home-link">
       <a href="javascript:void(0);" (click)="goToHome()">Go back to Home page</a>
     </div>
+    <div class="user-group" *ngIf="lnd.checkForUser()">
+          <a>Welcome </a>
+          <a>{{lnd.userToLogin['name']}}</a>
+    </div>
   </div>
 
   <div class="edit-group">
@@ -17,7 +21,7 @@
       <div>
         <textarea rows="1" style="width: 100%" [(ngModel)]="lnd.editTitle"></textarea>
       </div>
-      <div>
+      <div class="error-message">
         <label style="color: red" *ngIf="checkEmpty(lnd.editTitle)">The Title cannot be empty!</label>
         <label style="color: red" *ngIf="lnd.editTitle.length > 200">The Title cannot be longer than 200 characters</label>
       </div>
@@ -27,10 +31,10 @@
       <div>
         <textarea rows="5" style="width: 100%" [(ngModel)]="lnd.editMessage"></textarea>
       </div>
-      <div>
-        <label style="color: red" *ngIf="checkEmpty(lnd.editMessage)">The Message cannot be empty!</label>
-        <label style="color: red" *ngIf="lnd.editMessage.length > 2000">The Message cannot be longer than 2000 characters</label>
-      </div>
+        <div class="error-message">
+          <label style="color: red" *ngIf="checkEmpty(lnd.editMessage)">The Message cannot be empty!</label>
+          <label style="color: red" *ngIf="lnd.editMessage.length > 2000">The Message cannot be longer than 2000 characters</label>
+     </div>
     </div>
     <div class="edit-buttons">
       <div class="delete-button">

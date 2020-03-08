@@ -29,6 +29,14 @@
   padding-left: 80%;
   display: inline-flex;
 }
+.user-group {
+  padding-left: 65%;
+  padding-top: 10px;
+}
+.error-message {
+  padding-left: 80%;
+  height: 40px;
+}
 .small-gap {
   padding: 5px;
 }

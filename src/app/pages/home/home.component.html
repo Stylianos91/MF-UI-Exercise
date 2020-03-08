@@ -6,7 +6,7 @@
     <h2>Home</h2>
 
     <div class="user-group">
-      <div *ngIf="!checkForUser(); else elseBlock">
+      <div *ngIf="!lnd.checkForUser(); else elseBlock">
         <a>You are not logged in </a>
         <button (click)="goToLogin()">Log In</button>
       </div>
@@ -14,7 +14,7 @@
       <ng-template #elseBlock>
         <div class="small-gap">
           <a>Welcome </a>
-          <a>{{userIn}}</a>
+          <a>{{lnd.userToLogin['name']}}</a>
         </div>
 
         <div class="small-gap">
