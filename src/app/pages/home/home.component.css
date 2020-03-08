@@ -1,0 +1,27 @@
+.home-page {
+
+}
+.user-group {
+  padding-left: 70%;
+  padding-top: 10px;
+  display: flex;
+}
+
+.home-header {
+  width: 100%;
+  display: inline-flex;
+  border-style: solid;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.home-group {
+margin: 10px;
+}
+.small-gap {
+  padding: 5px;
+}
+.home-buttons {
+  display: inline-flex;
+  padding-left: 90%;
+}
