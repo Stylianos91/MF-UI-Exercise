@@ -13,11 +13,10 @@
     <div>
       <textarea rows="1" style="width: 60%" [(ngModel)]="userNameField"></textarea>
     </div>
-
-    <label style="color: red" *ngIf="checkUsers(userNameField)">Not a valid user name!</label>
-
     <div class="button-group">
+      <div class="error-label">
+        <label *ngIf="userNotValid">Not a valid user name!</label>
+      </div>
       <button [disabled]="checkEmpty(userNameField)" (click)="loginAction(userNameField)"> Log In</button>
-    </div>
   </div>
 </div>

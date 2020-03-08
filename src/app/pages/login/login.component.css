@@ -18,5 +18,9 @@
  width: 100%;
 }
 .button-group {
-  padding-left: 300px;
+  display: inline-flex;
+}
+.error-label {
+  width: 300px;
+  color: red;
 }

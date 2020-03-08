@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   availableUsers = [];
   userNameField = '';
+  userNotValid = false;
   constructor(private lnd: LandingComponent, private router: Router) { }
   checkEmpty(field) {
     if (!field.replace(/\s/g, '').length) {
@@ -28,14 +29,15 @@ export class LoginComponent implements OnInit {
     this.getUsers();
       if (this.availableUsers.includes(userName)) {
         console.log('Found in names ' + userName);
-        return false;
+        this.userNotValid = false;
       } else {
         console.log('Not in names');
-        return true;
+        this.userNotValid =  true;
       }
   }
 
   loginAction(userName) {
+    this.checkUsers(userName);
     for (let i = 0; i < this.lnd.USERS.length; i++) {
      if (userName === this.lnd.USERS[i].username) {
        this.lnd.userToLogin = this.lnd.USERS[i];
