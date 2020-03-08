@@ -28,10 +28,8 @@ export class LoginComponent implements OnInit {
   checkUsers(userName) {
     this.getUsers();
       if (this.availableUsers.includes(userName)) {
-        console.log('Found in names ' + userName);
         this.userNotValid = false;
       } else {
-        console.log('Not in names');
         this.userNotValid =  true;
       }
   }
@@ -42,7 +40,6 @@ export class LoginComponent implements OnInit {
      if (userName === this.bnd.USERS[i].username) {
        this.bnd.userToLogin = this.bnd.USERS[i];
        sessionStorage.setItem('userLoggedIn', JSON.stringify(this.bnd.userToLogin));
-       console.log('Login action------0');
        this.router.navigateByUrl('/app/home');
      }
     }

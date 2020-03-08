@@ -35,8 +35,6 @@ export class BindingService {
     this.serverService.getServerUsers().subscribe(
       (response: any []) => {
         this.USERS = response;
-        console.log(this.USERS);
-        console.log(this.POSTS);
         this.buildTable(this.USERS, this.POSTS);
       },
       (error) => console.log(error)
@@ -51,8 +49,6 @@ export class BindingService {
       const id = tableData[i].user;
       tableData[i].user = users[id - 1];
     }
-    console.log('-----------------');
-    console.log(tableData);
     this.TABLE_DATA = tableData;
     this.updateMax();
   }
@@ -110,7 +106,6 @@ export class BindingService {
   }
   updateMax() {
     this.max = this.TABLE_DATA.length / this.pageSize;
-    console.log('Table length is ' + this.TABLE_DATA.length);
   }
   resetMessages() {
     this.showGotSaved = false;
