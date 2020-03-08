@@ -1,4 +1,34 @@
-.save-cancel {
-  margin-left: 160px;
+.edit-page {
+
+}
+.edit-header {
+  width: 100%;
   display: inline-flex;
+  border-style: solid;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.home-link {
+  padding-left: 30px;
+  padding-top: 10px;
+}
+.edit-group {
+  margin: 70px;
+  width: 75%;
+}
+.edit-buttons {
+  width: 100%;
+  display: inline-flex;
+
+}
+.delete-button {
+  padding-top: 5px;
+}
+.save-cancel {
+  padding-left: 80%;
+  display: inline-flex;
+}
+.small-gap {
+  padding: 5px;
 }

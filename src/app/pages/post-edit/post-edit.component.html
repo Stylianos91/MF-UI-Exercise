@@ -1,19 +1,21 @@
-<div>
-  <div *ngIf="lnd.isNew === false; else elseBlock">
-    <h2>Edit Post</h2>
+<div class="edit-page">
+  <div class="edit-header">
+    <div *ngIf="lnd.isNew === false; else elseBlock">
+      <h2>Edit Post</h2>
+    </div>
+    <ng-template #elseBlock>
+      <h2>New Post</h2>
+    </ng-template>
+    <div class="home-link">
+      <a href="javascript:void(0);" (click)="goToHome()">Go back to Home page</a>
+    </div>
   </div>
-  <ng-template #elseBlock>
-    <h2>New Post</h2>
-  </ng-template>
-  <a href="javascript:void(0);" (click)="goToHome()">Go back to Home page</a>
 
-
-
-  <div>
+  <div class="edit-group">
     <div style="display:grid">
-      <label>Title</label>
+      <h5>Title</h5>
       <div>
-        <textarea style="width: 100%" [(ngModel)]="lnd.editTitle"></textarea>
+        <textarea rows="1" style="width: 100%" [(ngModel)]="lnd.editTitle"></textarea>
       </div>
       <div>
         <label style="color: red" *ngIf="checkEmpty(lnd.editTitle)">The Title cannot be empty!</label>
@@ -21,34 +23,35 @@
       </div>
     </div>
     <div style="display:grid">
-      <label>Message</label>
+      <h5>Message</h5>
       <div>
-        <textarea style="width: 100%" [(ngModel)]="lnd.editMessage"></textarea>
+        <textarea rows="5" style="width: 100%" [(ngModel)]="lnd.editMessage"></textarea>
       </div>
       <div>
         <label style="color: red" *ngIf="checkEmpty(lnd.editMessage)">The Message cannot be empty!</label>
         <label style="color: red" *ngIf="lnd.editMessage.length > 2000">The Message cannot be longer than 2000 characters</label>
       </div>
     </div>
-    <div style="display: inline-flex; padding-top: 50px">
-      <div *ngIf="lnd.isNew === false;">
-        <button (click)="deleteAction()">Delete</button>
+    <div class="edit-buttons">
+      <div class="delete-button">
+        <div *ngIf="lnd.isNew === false;">
+          <button (click)="deleteAction()">Delete</button>
+        </div>
       </div>
+
       <div class="save-cancel">
-        <div *ngIf="lnd.isNew === false; else elseBlock2">
+        <div class="small-gap" *ngIf="lnd.isNew === false; else elseBlock2">
           <button [disabled]="checkDisabledAny()" (click)="editAction()">Save</button>
         </div>
         <ng-template #elseBlock2>
-          <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
+          <div class="small-gap">
+            <button [disabled]="checkDisabled()" (click)="saveAction()">Save</button>
+          </div>
         </ng-template>
-
-        <button [disabled]="checkDisabled()" (click)="cancelAction()">Cancel</button>
+        <div class="small-gap">
+          <button [disabled]="checkDisabled()" (click)="cancelAction()">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
-
-
-
-
-
 </div>
