@@ -95,6 +95,7 @@ export class PostEditComponent implements OnInit {
   }
 
   confirmNavigation(url) {
+    this.lnd.resetMessages();
     if (this.checkAnyModified() === true) {
       if (confirm('Unsaved Changes, Leave anyway?')) {
         this.router.navigateByUrl(url);
