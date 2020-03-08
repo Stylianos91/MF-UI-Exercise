@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {LandingComponent} from '../landing/landing.component';
 import {Router} from '@angular/router';
+import {BindingService} from '../../services/binding.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -11,12 +11,12 @@ export class PostEditComponent implements OnInit {
   titleField = '';
   messageField = '';
 
-  constructor(private lnd: LandingComponent, private router: Router) {
+  constructor(private bnd: BindingService, private router: Router) {
   }
 
   ngOnInit() {
-    this.titleField = this.lnd.editTitle;
-    this.messageField = this.lnd.editMessage;
+    this.titleField = this.bnd.editTitle;
+    this.messageField = this.bnd.editMessage;
   }
 
   goToHome() {
@@ -24,18 +24,18 @@ export class PostEditComponent implements OnInit {
   }
 
   saveAction() {
-    this.titleField = this.lnd.editTitle;
-    this.messageField = this.lnd.editMessage;
+    this.titleField = this.bnd.editTitle;
+    this.messageField = this.bnd.editMessage;
     this.router.navigateByUrl('/app/home');
-    this.lnd.saveNewPost();
+    this.bnd.saveNewPost();
   }
   editAction() {
     this.router.navigateByUrl('/app/home');
-    this.lnd.editPost();
+    this.bnd.editPost();
   }
   deleteAction() {
     if (confirm('Are you sure you want to delete this post?')) {
-      this.lnd.deletePost();
+      this.bnd.deletePost();
       this.router.navigateByUrl('/app/home');
     }
 
@@ -46,7 +46,7 @@ export class PostEditComponent implements OnInit {
   }
 
   checkModified() {
-    if ((this.titleField !== this.lnd.editTitle) && (this.messageField !== this.lnd.editMessage)) {
+    if ((this.titleField !== this.bnd.editTitle) && (this.messageField !== this.bnd.editMessage)) {
       return true;
     } else {
       return false;
@@ -54,7 +54,7 @@ export class PostEditComponent implements OnInit {
   }
 
   checkAnyModified() {
-    if ((this.titleField !== this.lnd.editTitle) || (this.messageField !== this.lnd.editMessage)) {
+    if ((this.titleField !== this.bnd.editTitle) || (this.messageField !== this.bnd.editMessage)) {
       return true;
     } else {
       return false;
@@ -70,8 +70,8 @@ export class PostEditComponent implements OnInit {
   }
 
   checkValidated() {
-    if ((this.checkEmpty(this.lnd.editTitle) === false && this.lnd.editTitle.length < 200) &&
-      (this.checkEmpty(this.lnd.editMessage) === false && this.lnd.editMessage.length < 2000)) {
+    if ((this.checkEmpty(this.bnd.editTitle) === false && this.bnd.editTitle.length < 200) &&
+      (this.checkEmpty(this.bnd.editMessage) === false && this.bnd.editMessage.length < 2000)) {
       return true;
     } else {
       return false;
@@ -95,7 +95,7 @@ export class PostEditComponent implements OnInit {
   }
 
   confirmNavigation(url) {
-    this.lnd.resetMessages();
+    this.bnd.resetMessages();
     if (this.checkAnyModified() === true) {
       if (confirm('Unsaved Changes, Leave anyway?')) {
         this.router.navigateByUrl(url);

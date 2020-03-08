@@ -6,7 +6,7 @@
     <h2>Home</h2>
 
     <div class="user-group">
-      <div *ngIf="!lnd.checkForUser(); else elseBlock">
+      <div *ngIf="!bnd.checkForUser(); else elseBlock">
         <a>You are not logged in </a>
         <button (click)="goToLogin()">Log In</button>
       </div>
@@ -14,7 +14,7 @@
       <ng-template #elseBlock>
         <div class="small-gap">
           <a>Welcome </a>
-          <a>{{lnd.userToLogin['name']}}</a>
+          <a>{{bnd.userToLogin['name']}}</a>
         </div>
 
         <div class="small-gap">
@@ -29,9 +29,9 @@
     </div>
   </div>
   <div class="home-group">
-    <h4 style="color: green" *ngIf="lnd.showGotSaved">A new post was saved successfully</h4>
-    <h4 style="color: green" *ngIf="lnd.showGotUpdated">Post was updated successfully</h4>
-    <h4 style="color: green" *ngIf="lnd.showGotDeleted">Post was deleted successfully</h4>
+    <h4 style="color: green" *ngIf="bnd.showGotSaved">A new post was saved successfully</h4>
+    <h4 style="color: green" *ngIf="bnd.showGotUpdated">Post was updated successfully</h4>
+    <h4 style="color: green" *ngIf="bnd.showGotDeleted">Post was deleted successfully</h4>
 
     <table class="table table-striped">
       <thead>
@@ -41,7 +41,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let post of lnd.tableData">
+      <tr *ngFor="let post of bnd.tableData">
 
         <th scope="row">
           {{ post.user.name }}
@@ -59,12 +59,12 @@
 
     <div class="home-buttons">
       <div class="small-gap">
-        <button (click)="lnd.decreasePage()" [disabled]="lnd.page - 1 === 0">
+        <button (click)="bnd.decreasePage()" [disabled]="bnd.page - 1 === 0">
           <i class="fas fa-angle-left"></i>
         </button>
       </div>
       <div class="small-gap">
-        <button (click)="lnd.increasePage()" [disabled]="lnd.page > lnd.max">
+        <button (click)="bnd.increasePage()" [disabled]="bnd.page > bnd.max">
           <i class="fas fa-angle-right"></i>
         </button>
       </div>

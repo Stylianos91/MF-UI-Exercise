@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ServerService} from './services/server.service';
+import {BindingService} from './services/binding.service';
 import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
@@ -25,7 +26,7 @@ import { LandingComponent } from './pages/landing/landing.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ServerService],
+  providers: [ServerService, BindingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {LandingComponent} from '../landing/landing.component';
 import {Router} from '@angular/router';
+import {BindingService} from '../../services/binding.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   availableUsers = [];
   userNameField = '';
   userNotValid = false;
-  constructor(private lnd: LandingComponent, private router: Router) { }
+  constructor(private bnd: BindingService, private router: Router) { }
   checkEmpty(field) {
     if (!field.replace(/\s/g, '').length) {
       return true;
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
     }
   }
   getUsers() {
-    for (let i = 0; i < this.lnd.USERS.length; i++) {
-      this.availableUsers.push(this.lnd.USERS[i].username);
+    for (let i = 0; i < this.bnd.USERS.length; i++) {
+      this.availableUsers.push(this.bnd.USERS[i].username);
     }
     }
 
@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
 
   loginAction(userName) {
     this.checkUsers(userName);
-    for (let i = 0; i < this.lnd.USERS.length; i++) {
-     if (userName === this.lnd.USERS[i].username) {
-       this.lnd.userToLogin = this.lnd.USERS[i];
-       sessionStorage.setItem('userLoggedIn', JSON.stringify(this.lnd.userToLogin));
+    for (let i = 0; i < this.bnd.USERS.length; i++) {
+     if (userName === this.bnd.USERS[i].username) {
+       this.bnd.userToLogin = this.bnd.USERS[i];
+       sessionStorage.setItem('userLoggedIn', JSON.stringify(this.bnd.userToLogin));
        console.log('Login action------0');
        this.router.navigateByUrl('/app/home');
      }
