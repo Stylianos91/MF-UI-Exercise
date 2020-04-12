@@ -20,7 +20,7 @@ export class BindingService {
   showGotUpdated = false;
   showGotDeleted = false;
   constructor(private serverService: ServerService) {
-    this.onGetPosts();
+  //  this.onGetPosts();
   }
   onGetPosts() {
     this.serverService.getServerPosts().subscribe(

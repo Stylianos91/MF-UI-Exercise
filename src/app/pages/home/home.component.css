@@ -1,5 +1,13 @@
 .home-page {
-
+height: 1800px;
+width:  3800px;
+ background-color: black;
+}
+.run-button {
+  padding: 200px;
+  height: 500px;
+  width: 800px;
+  background-color: brown;
 }
 .user-group {
   padding-left: 70%;

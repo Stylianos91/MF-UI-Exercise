@@ -1,74 +1,79 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"-->
+<!--      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">-->
 <div class="home-page">
-  <div class="home-header">
-    <h2>Home</h2>
-
-    <div class="user-group">
-      <div *ngIf="!bnd.checkForUser(); else elseBlock">
-        <a>You are not logged in </a>
-        <button (click)="goToLogin()">Log In</button>
-      </div>
-
-      <ng-template #elseBlock>
-        <div class="small-gap">
-          <a>Welcome </a>
-          <a>{{bnd.userToLogin['name']}}</a>
-        </div>
-
-        <div class="small-gap">
-          <button (click)="goToNew()">New Post</button>
-        </div>
-        <div class="small-gap">
-          <button (click)="goToLogin()">Log Out</button>
-        </div>
-
-
-      </ng-template>
-    </div>
-  </div>
-  <div class="home-group">
-    <h4 style="color: green" *ngIf="bnd.showGotSaved">A new post was saved successfully</h4>
-    <h4 style="color: green" *ngIf="bnd.showGotUpdated">Post was updated successfully</h4>
-    <h4 style="color: green" *ngIf="bnd.showGotDeleted">Post was deleted successfully</h4>
-
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">User</th>
-        <th scope="col">Post</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let post of bnd.tableData">
-
-        <th scope="row">
-          {{ post.user.name }}
-          <a href="javascript:void(0);" (click)="goToCompanySite(post.user.website)"> {{ post.user.website}}</a>
-        </th>
-
-        <th scope="row">
-          <a href="javascript:void(0);" (click)="goToEdit(post)"> {{ post.title }}</a>
-          <a>  {{ post.body }}</a>
-        </th>
-
-      </tr>
-      </tbody>
-    </table>
-
-    <div class="home-buttons">
-      <div class="small-gap">
-        <button (click)="bnd.decreasePage()" [disabled]="bnd.page - 1 === 0">
-          <i class="fas fa-angle-left"></i>
-        </button>
-      </div>
-      <div class="small-gap">
-        <button (click)="bnd.increasePage()" [disabled]="bnd.page > bnd.max">
-          <i class="fas fa-angle-right"></i>
-        </button>
-      </div>
-
-    </div>
+  <div class="run-button">
+    <button (click)="runActions()">Run Actions</button>
   </div>
 </div>
+
+<!--<div class="home-page">-->
+<!--  <div class="home-header">-->
+<!--    <h2>Home</h2>-->
+
+<!--    <div class="user-group">-->
+<!--      <div *ngIf="!bnd.checkForUser(); else elseBlock">-->
+<!--        <a>You are not logged in </a>-->
+<!--        <button (click)="goToLogin()">Log In</button>-->
+<!--      </div>-->
+
+<!--      <ng-template #elseBlock>-->
+<!--        <div class="small-gap">-->
+<!--          <a>Welcome </a>-->
+<!--          <a>{{bnd.userToLogin['name']}}</a>-->
+<!--        </div>-->
+
+<!--        <div class="small-gap">-->
+<!--          <button (click)="goToNew()">New Post</button>-->
+<!--        </div>-->
+<!--        <div class="small-gap">-->
+<!--          <button (click)="goToLogin()">Log Out</button>-->
+<!--        </div>-->
+
+
+<!--      </ng-template>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="home-group">-->
+<!--    <h4 style="color: green" *ngIf="bnd.showGotSaved">A new post was saved successfully</h4>-->
+<!--    <h4 style="color: green" *ngIf="bnd.showGotUpdated">Post was updated successfully</h4>-->
+<!--    <h4 style="color: green" *ngIf="bnd.showGotDeleted">Post was deleted successfully</h4>-->
+
+<!--    <table class="table table-striped">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">User</th>-->
+<!--        <th scope="col">Post</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr *ngFor="let post of bnd.tableData">-->
+
+<!--        <th scope="row">-->
+<!--          {{ post.user.name }}-->
+<!--          <a href="javascript:void(0);" (click)="goToCompanySite(post.user.website)"> {{ post.user.website}}</a>-->
+<!--        </th>-->
+
+<!--        <th scope="row">-->
+<!--          <a href="javascript:void(0);" (click)="goToEdit(post)"> {{ post.title }}</a>-->
+<!--          <a>  {{ post.body }}</a>-->
+<!--        </th>-->
+
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+<!--    <div class="home-buttons">-->
+<!--      <div class="small-gap">-->
+<!--        <button (click)="bnd.decreasePage()" [disabled]="bnd.page - 1 === 0">-->
+<!--          <i class="fas fa-angle-left"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="small-gap">-->
+<!--        <button (click)="bnd.increasePage()" [disabled]="bnd.page > bnd.max">-->
+<!--          <i class="fas fa-angle-right"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
